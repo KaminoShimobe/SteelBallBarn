@@ -1,0 +1,17 @@
+{
+  "name": "vcb",
+  "version": "0.0.1",
+  "description": "Kamino's Discord Bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "KaminoShimobe",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "mysql": "^2.15.0",
+    "pixel-art": "^1.2.0",
+    "canvas": "^2.4.1"
+  }
+}
