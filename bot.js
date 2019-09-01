@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const Danbooru = require('danbooru');
 const mysql = require("mysql");
 const http = require('http');
 const pixel = require('pixel-art');
