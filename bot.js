@@ -284,7 +284,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			
 			.setAuthor(message.author.username)
 			.attachFile(artPiece)
-			..setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: :carrot:" + money + "\n Horses: " + horses + "\n Stables: " + stables + "\n" + bio)
+			.setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: :carrot:" + money + "\n Horses: " + horses + "\n Stables: " + stables + "\n" + bio)
 			.setFooter("ID:" + other.id, other.avatarURL)
 			.setColor(color); 
 
