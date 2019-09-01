@@ -195,14 +195,14 @@ for(var i = 0; i < 100; i++){
 		
 var PixelArt = require('pixel-art');	
 const { createCanvas } = require('canvas')	
-		const mycanvas = createCanvas(100, 1)	
+		const mycanvas = createCanvas(1600, 4)	
 	var artwork = PixelArt.art(meter)
   .palette({
     '.': '#03a619',
     '-': '#00ff22'
   })
   .pos({ x: 0, y: 0 })
-  .scale(16)
+  .scale(4)
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
@@ -263,14 +263,14 @@ for(var i = 0; i < 100; i++){
 		
 var PixelArt = require('pixel-art');	
 const { createCanvas } = require('canvas')	
-		const mycanvas = createCanvas(100, 1)	
+		const mycanvas = createCanvas(1600, 4)	
 	var artwork = PixelArt.art(meter)
   .palette({
     '.': '#03a619',
     '-': '#00ff22'
   })
   .pos({ x: 0, y: 0 })
-  .scale(16)
+  .scale(4)
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
