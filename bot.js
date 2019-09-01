@@ -186,7 +186,7 @@ con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) =>
 		var percent = exp / cap;
 		
 for(var i = 0; i < 100; i++){
-	if(i <= percent){
+	if(i < percent){
 		meter += "-";
 	} else {
 		meter += ".";
@@ -202,7 +202,7 @@ const { createCanvas } = require('canvas')
     '-': '#00ff22'
   })
   .pos({ x: 0, y: 0 })
-  .scale(4)
+  .scale(16)
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
@@ -216,7 +216,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			
 			.setAuthor(message.author.username)
 			.attachFile(artPiece)
-			.setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: :carrot:" + money + "\n" + bio + "\n + Horses: " + horses + "\n Stables: " + stables)
+			.setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: :carrot:" + money + "\n Horses: " + horses + "\n Stables: " + stables + "\n" + bio)
 			.setFooter("ID:" + message.author.id, message.author.avatarURL)
 			.setColor(color); 
 
@@ -254,7 +254,7 @@ con.query(`SELECT * FROM user WHERE id = '${other.id}'`, (err, rows) => {
 		var percent = exp / cap;
 		
 for(var i = 0; i < 100; i++){
-	if(i <= percent){
+	if(i < percent){
 		meter += "-";
 	} else {
 		meter += ".";
@@ -270,7 +270,7 @@ const { createCanvas } = require('canvas')
     '-': '#00ff22'
   })
   .pos({ x: 0, y: 0 })
-  .scale(4)
+  .scale(16)
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
@@ -284,7 +284,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			
 			.setAuthor(message.author.username)
 			.attachFile(artPiece)
-			.setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: :carrot:" + money + "\n" + bio + "\n + Horses: " + horses + "\n Stables: " + stables)
+			..setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: :carrot:" + money + "\n Horses: " + horses + "\n Stables: " + stables + "\n" + bio)
 			.setFooter("ID:" + other.id, other.avatarURL)
 			.setColor(color); 
 
