@@ -83,12 +83,44 @@ bot.on("message", async message => {
 
 
 	
+	if(command === `${prefix}table`){
+	if(message.author.id == '242118931769196544'){
+		var sql = "CREATE TABLE user (id VARCHAR(30), money BIGINT, level TINYINT, exp INT, bio VARCHAR(100), inventory TEXT, streak SMALLINT, stables TINYINT, horses TEXT, hue VARCHAR(7))";
+		var sql2 = "CREATE TABLE server (id VARCHAR(30), channel VARCHAR(30), cooldown SMALLINT, bush INT , wildHorse BOOLEAN)";
+		var sql3 = "CREATE TABLE horse (owner VARCHAR(30), name VARCHAR(32), energy TINYINT, body VARCHAR(7), mane VARCHAR(7), breed VARCHAR(20), level TINYINT, exp INT, personality VARCHAR(30), currowner VARCHAR(30), iq TINYINT, strength TINYINT, speed TINYINT)";
+		var sql4 = "CREATE TABLE encounter (id VARCHAR(30), body VARCHAR(7), mane VARCHAR(7), breed VARCHAR(20), personality VARCHAR(30), fleeRate TINYINT)";
+		
+		con.query(sql, function (err, result) {
+    	if (err) throw err;
+    	message.author.send("Created Database for **users**");
+  	});
+	
+		
+		con.query(sql2, function (err, result) {
+    	if (err) throw err;
+    	message.author.send("Created Database for **server**");
+  	});
+	
+	
+	con.query(sql3, function (err, result) {
+    	if (err) throw err;
+    	message.author.send("Created Database for **horses**");
+  	});
+	}
+       
+       con.query(sql4, function (err, result) {
+    	if (err) throw err;
+    	message.author.send("Created Database for **random encounters**");
+  	});
+	
 
-
+	}	
 		
 	
 	
 	if(message.author.bot) return;
+		
+	if(message.channel.type === "dm") return;	
 	
 	function help(){
 
