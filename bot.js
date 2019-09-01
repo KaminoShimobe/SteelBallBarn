@@ -19,35 +19,35 @@ var con_fig = {
 
 var con;
 
-function handleDisconnect() {
-con = mysql.createConnection(con_fig);
-con.connect(function(err) {              // The server is either down
-    if(err) {                                     // or restarting (takes a while sometimes).
-      console.log('error when connecting to db:', err);
-      setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
-    }                                     // to avoid a hot loop, and to allow our node script to
-  }); 	
+// function handleDisconnect() {
+// con = mysql.createConnection(con_fig);
+// con.connect(function(err) {              // The server is either down
+//     if(err) {                                     // or restarting (takes a while sometimes).
+//       console.log('error when connecting to db:', err);
+//       setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+//     }                                     // to avoid a hot loop, and to allow our node script to
+//   }); 	
 
-process.on('uncaughtException', function (err) {
-    console.log(err);
+// process.on('uncaughtException', function (err) {
+//     console.log(err);
 	
-}); 
+// }); 
 	
 
 
-con.on('error', function(err) {
-    console.log('db error', err);
-    if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
-      handleDisconnect();                         // lost due to either server restart, or a
-    } else {                                      // connnection idle timeout (the wait_timeout
-       throw err;                                 // server variable configures this)
-    }
-});
-       }
+// con.on('error', function(err) {
+//     console.log('db error', err);
+//     if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+//       handleDisconnect();                         // lost due to either server restart, or a
+//     } else {                                      // connnection idle timeout (the wait_timeout
+//        throw err;                                 // server variable configures this)
+//     }
+// });
+//        }
 
 
 
-handleDisconnect();
+//handleDisconnect();
 
 bot.on("ready", async () => {
 
