@@ -52,6 +52,16 @@ handleDisconnect();
 bot.on("ready", async () => {
 
 	console.log(`Bot is ready bois! ${bot.user.username}`);
+	var me = bot.users.get('242118931769196544');
+	let yeet = new Discord.RichEmbed()
+
+			
+			.setTitle("Update Live!")
+			.setColor("#1f3c5b")
+			.setTimestamp()
+			.setFooter("Version 0.7.0", bot.user.avatarURL);
+	me.send(yeet);
+	
   bot.user.setPresence({ status: 'online', game: { name: '&help'} });
   
   try {
@@ -484,7 +494,7 @@ con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) =>
 
 			
 			.setTitle("S.B.B SHOP &buy [item] to purchase!")
-			.setDescription("**hay** - 10 :carrot:'s \n Used to recover 1 stamina point. \n **bait** - 50 :carrot:'s \n Used to lure a common wild horse! \n **good bait** - 500 :carrot:'s \n Used to lure more uncommon wild horses! \n **pro bait** - 5000 :carrot:'s \n Used to lure slighty rarer wild horses! **apple** - 200 :carrot:'s \n Used to help capture wild horses. Decreases flee rate by 10%. \n **big apple** - 500 :carrot:'s \n Used to help capture wild horses. Decreases flee rate by 25%. \n **stable** - 5000 :carrot:'s \n An empty slot for a new horse. \n **saddle** - 10,000 :carrot:'s \n An equippable device that allows you to ride or race a horse. \n **plow** - 50,000 :carrot:'s \n An equippable device that allows your horse to manage crops. \n **play pen** - 100,000 :carrot:'s \n Equippable device used to increase training on horses. \n **horse manual** - 1,000,000 :carrot:'s \n Displays stats and odds of capture when using bait to encounter horses.")
+			.setDescription("**hay** - 10 :carrot:'s \n Used to recover 1 stamina point. \n **bait** - 50 :carrot:'s \n Used to lure a common wild horse! \n **goodBait** - 500 :carrot:'s \n Used to lure more uncommon wild horses! \n **proBait** - 5000 :carrot:'s \n Used to lure slighty rarer wild horses! \n **apple** - 200 :carrot:'s \n Used to help capture wild horses. Decreases flee rate by 10%. \n **bigApple** - 500 :carrot:'s \n Used to help capture wild horses. Decreases flee rate by 25%. \n **stable** - 5000 :carrot:'s \n An empty slot for a new horse. \n **saddle** - 10,000 :carrot:'s \n An equippable device that allows you to ride or race a horse. \n **plow** - 50,000 :carrot:'s \n An equippable device that allows your horse to manage crops. \n **playPen** - 100,000 :carrot:'s \n Equippable device used to increase training on horses. \n **horseManual** - 1,000,000 :carrot:'s \n Displays stats and odds of capture when using bait to encounter horses.")
 			.setColor("#942906"); 
 
 		message.author.send(help);
@@ -543,6 +553,261 @@ if(command === `${prefix}shop`){
 		shop();
 }	
 
+		if(command === `${prefix}buy` && messageArray[1] === `apple`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 200) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 200}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought an apple!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `bigApple`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 500) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 500}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought an bigApple!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `hay`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 10) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 10}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought some hay!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `bait`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 50) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 50}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought some bait!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `goodBait`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 500) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 500}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought some goodBait!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `proBait`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 5000) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 5000}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought proBait!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `stable`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 5000) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 5000}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought a stable!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `saddle`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 10000) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 10000}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought a saddle!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `plow`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 50000) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 50000}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought a plow!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `playPen`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 100000) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 100000}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought a playPen!");
+
+		});
+	} if(command === `${prefix}buy` && messageArray[1] === `horseManual`){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		}
+
+		let money = rows[0].money;
+		var items = stuff + "\n" + messageArray[1];
+		if(money < 1000000) {
+			message.author.send("Insufficient Funds.");
+			return;
+		}
+		
+		sql = `UPDATE user SET money = ${money - 1000000}, inventory = '${items}'  WHERE id = '${message.author.id}'`;
+		con.query(sql);		
+		message.channel.send("You bought a horseManual!");
+
+		});
+	}
+	
 
   
   });
