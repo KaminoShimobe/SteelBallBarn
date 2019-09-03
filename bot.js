@@ -119,6 +119,40 @@ bot.on("message", async message => {
 	
 	
 	if(message.author.bot) return;
+	
+	
+function inventory(){
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;
+		let stuff = rows[0].inventory;
+		if(rows.length < 1) {
+			
+			if(message.channel.type === "dm"){
+			message.author.send("Create an account with `&user`!");
+		} else {
+			message.channel.send("Create an account with `&user`!");
+		}
+			
+			
+		}	else {
+
+ 			if(message.channel.type === "dm"){
+			message.author.send("Inventory: **" + stuff + "**");
+		} else {
+			message.channel.send("Inventory: **" + stuff + "**");
+		}
+			
+			
+			
+		}
+			});
+		return;
+	}	
+	
+if(command === `${prefix}items`){
+		inventory();
+}		
 		
 	if(message.channel.type === "dm") return;	
 //functions
@@ -130,7 +164,7 @@ bot.on("message", async message => {
 
 			
 			.setTitle("Steel Ball Barn commands")
-			.setDescription(`**${prefix}help**: \n Pulls up this list.`)
+			.setDescription(`**${prefix}help**: \n Pulls up this list. \n **${prefix}user**: \n Creates a user. \n **${prefix}view**: \n Views your user data. \n **${prefix}view [mention]**: \n Views another user's data. \n **${prefix}delete**: \n Deletes your user, horses, and all items attached to said user. \n **${prefix}shop**: \n Pulls up the shop list. \n **${prefix}daily**: \n Collects a daily amount of carrots. \n **${prefix}bio**: \n Creates a bio for your account. \n **${prefix}color**: \n Changes the color of your user account.`)
 			.setColor("#942906"); 
 
 		message.author.sendEmbed(help);
@@ -144,7 +178,7 @@ function addUser(){
 		let sql;
 		if(rows.length < 1) {
 			
-			sql = `INSERT INTO user (id, money, level, exp, bio, inventory, streak, stables, horses, hue) VALUES ('${message.author.id}', ${0}, ${1}, ${0}, '&bio to set your bio', '', ${4}, ${0}, '', '#942906')`;
+			sql = `INSERT INTO user (id, money, level, exp, bio, inventory, streak, stables, horses, hue) VALUES ('${message.author.id}', ${0}, ${1}, ${0}, '&bio to set your bio', '', ${0}, ${4}, '', '#942906')`;
 			con.query(sql, console.log);
 			message.channel.send(`User account created! ${prefix}view to view your account!`)
 			return;
@@ -216,7 +250,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			
 			.setAuthor(message.author.username)
 			.attachFile(artPiece)
-			.setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: :carrot:" + money + "\n Horses: " + horses + "\n Stables: " + stables + "\n" + bio)
+			.setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: " + money + ":carrot:'s \n Horses: " + horses + "\n Stables: " + stables + "\n" + bio)
 			.setFooter("ID:" + message.author.id, message.author.avatarURL)
 			.setColor(color); 
 
@@ -284,7 +318,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			
 			.setAuthor(message.author.username)
 			.attachFile(artPiece)
-			.setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: :carrot:" + money + "\n Horses: " + horses + "\n Stables: " + stables + "\n" + bio)
+			.setDescription("Level: " + level + "\n EXP: " + exp + "/" + cap + "\n Carrots: " + money + ":carrot:'s  \n Horses: " + horses + "\n Stables: " + stables + "\n" + bio)
 			.setFooter("ID:" + other.id, other.avatarURL)
 			.setColor(color); 
 
@@ -406,6 +440,58 @@ con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) =>
 
 }		
 	
+	function daily(){
+		
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;
+		var money = rows[0].money;	
+		var check;
+
+		if(rows.length < 1) {
+			message.reply(`You have no user! \n Type ${prefix}user to create one!`);
+			
+			return;
+		}	
+
+		if (dailyCD.has(message.author.id)) {
+            message.reply("You have already collected your daily check!");
+            return;
+    } else {
+    	
+    		check = 1000;
+
+
+    	sql = `UPDATE user SET money = ${money + check} WHERE id = '${message.author.id}'`;
+          
+        con.query(sql); 
+	   			 
+           message.reply(" got " + check + " :carrot:'s!");
+        // Adds the user to the set so that they can't talk for a minute
+       dailyCD.add(message.author.id);
+        setTimeout(() => {
+          // Removes the user from the set after a minute
+          dailyCD.delete(message.author.id);
+        }, (1000*60*60*24));
+
+    }
+	});
+	}
+
+
+	function shop(){
+		let help = new Discord.RichEmbed()
+
+			
+			.setTitle("S.B.B SHOP &buy [item] to purchase!")
+			.setDescription("**hay** - 10 :carrot:'s \n Used to recover 1 stamina point. \n **bait** - 50 :carrot:'s \n Used to lure a common wild horse! \n **good bait** - 500 :carrot:'s \n Used to lure more uncommon wild horses! \n **pro bait** - 5000 :carrot:'s \n Used to lure slighty rarer wild horses! **apple** - 200 :carrot:'s \n Used to help capture wild horses. Decreases flee rate by 10%. \n **big apple** - 500 :carrot:'s \n Used to help capture wild horses. Decreases flee rate by 25%. \n **stable** - 5000 :carrot:'s \n An empty slot for a new horse. \n **saddle** - 10,000 :carrot:'s \n An equippable device that allows you to ride or race a horse. \n **plow** - 50,000 :carrot:'s \n An equippable device that allows your horse to manage crops. \n **play pen** - 100,000 :carrot:'s \n Equippable device used to increase training on horses. \n **horse manual** - 1,000,000 :carrot:'s \n Displays stats and odds of capture when using bait to encounter horses.")
+			.setColor("#942906"); 
+
+		message.author.send(help);
+		message.reply(" Sent you the shop list to your dms!")
+	}	
+		
+	
 //commands	
 
 	if(command === `${prefix}help`){
@@ -448,6 +534,15 @@ if(command === `${prefix}view` && messageArray[1] != undefined ){
 if(command === `${prefix}delete`){
 	deleteUser();
 }	
+	
+if(command === `${prefix}daily`){
+		daily();
+}	
+
+if(command === `${prefix}shop`){
+		shop();
+}	
+
 
   
   });
