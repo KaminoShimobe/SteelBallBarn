@@ -99,31 +99,32 @@ bot.on("message", async message => {
 		var sql2 = "CREATE TABLE server (id VARCHAR(30), channel VARCHAR(30), cooldown SMALLINT, bush INT , wildHorse BOOLEAN)";
 		var sql3 = "CREATE TABLE horse (owner VARCHAR(30), name VARCHAR(32), energy TINYINT, body VARCHAR(7), mane VARCHAR(7), breed VARCHAR(20), level TINYINT, exp INT, personality VARCHAR(30), currowner VARCHAR(30), iq TINYINT, strength TINYINT, speed TINYINT)";
 		var sql4 = "CREATE TABLE encounter (id VARCHAR(30), body VARCHAR(7), mane VARCHAR(7), breed VARCHAR(20), personality VARCHAR(30), fleeRate TINYINT)";
+		var sql5 = "ALTER TABLE horse ADD item VARCHAR(30)";
 		
-		con.query(sql, function (err, result) {
+		con.query(sql5, function (err, result) {
     	if (err) throw err;
-    	message.author.send("Created Database for **users**");
+    	message.author.send("Added column in **horse** for **equippable item**");
   	});
 	
 		
-		con.query(sql2, function (err, result) {
-    	if (err) throw err;
-    	message.author.send("Created Database for **server**");
-  	});
+// 		con.query(sql2, function (err, result) {
+//     	if (err) throw err;
+//     	message.author.send("Created Database for **server**");
+//   	});
 	
 	
-	con.query(sql3, function (err, result) {
-    	if (err) throw err;
-    	message.author.send("Created Database for **horses**");
-  	});
-	}
+// 	con.query(sql3, function (err, result) {
+//     	if (err) throw err;
+//     	message.author.send("Created Database for **horses**");
+//   	});
+// 	}
        
-       con.query(sql4, function (err, result) {
-    	if (err) throw err;
-    	message.author.send("Created Database for **random encounters**");
-  	});
+//        con.query(sql4, function (err, result) {
+//     	if (err) throw err;
+//     	message.author.send("Created Database for **random encounters**");
+//   	});
 	
-
+}
 	}	
 		
 	
@@ -500,7 +501,157 @@ con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) =>
 		message.author.send(help);
 		message.reply(" Sent you the shop list to your dms!")
 	}	
+
+function encounter(){
+	con.query(`SELECT * FROM encounter WHERE id = '${message.guild.id}'`, (err, rows) => {
+		if(err) throw err;
+		let sql;	
+		var level = Math.floor(Math.random() * 10) + 1;
+		var personalities = ["simple", "stubborn", "sporadic", "cautious", "hasty", "gentle", "patient"];
+		var personality = personalities[Math.floor(Math.random() * 6)];
+		var iq = Math.floor(Math.random() * 100) + 10;
+		var strength = Math.floor(Math.random() * 10) + 1;
+		var stamina = Math.floor(Math.random() * 10) + 1;
+		var speed = Math.floor(Math.random() * 10) + 1;
+		var fleeRate = strength + stamina + speed + (iq / 5);
+		var mane = '#'+Math.floor(Math.random()*16777215).toString(16);
+		var body = '#'+Math.floor(Math.random()*16777215).toString(16);
 		
+		if(personality == "gentle") {
+		 strength -= 1;
+		 speed -= 1;	
+		 iq += 10
+		}	else if(personality == "stubborn") {
+		 strength += 1;
+		 stamina += 2;	
+		 iq -= 10;	
+		} else if(personality == "sporadic") {	
+		var chance = Math.floor(Math.random() * 1);	
+		 strength += Math.floor(Math.random() * 3);
+		 stamina += Math.floor(Math.random() * 3);
+		 speed += Math.floor(Math.random() * 3);
+		if(chance == 0 && iq > 25){		
+		 iq -= Math.floor(Math.random() * 25);	
+		} else {
+		 iq += Math.floor(Math.random() * 25);		
+		}	
+		} else if(personality == "cautious") {
+		 strength += 1;
+		 stamina -= 1;	
+		 speed += 2;	
+		 iq += 5;	
+		} else if(personality == "hasty") {
+		 strength += 2;
+		 stamina -= 1;
+		 speed += 2	
+		 iq -= 10;	
+		} else if(personality == "patient") {
+		 stamina += 2;	
+		 speed -= 1;		
+		 iq += 10;	
+		} else {
+			
+		}	
+	
+	
+		if(rows.length < 1) {
+		
+		var poses = ["normal", "lookBack", "eating", "leaping"];
+		var sprite = poses[Math.floor(math.random * 4)];	
+			
+			sql = `INSERT INTO encounter (id, body, mane, breed, personality, fleeRate) VALUES ('${message.guild.id}', '${body}', '${mane}', '${sprite}', '${personality}', ${fleeRate})`;
+			con.query(sql, console.log);
+			
+	var pose = [];
+	var pose2 = [];
+	var pose3 = [];
+	var pose4 = [];		
+	
+	var jojoRef;
+	if(sprite == "normal"){
+		jojoRef = pose;	
+	} else if(sprite == "lookBack"){
+		jojoRef = pose2;	
+	} else if(sprite == "eating"){
+		jojoRef = pose3;	
+	} else if(sprite == "leaping"){
+		jojoRef = pose4;	
+	}			
+			
+			var PixelArt = require('pixel-art');	
+const { createCanvas } = require('canvas')	
+		const mycanvas = createCanvas(400, 2)	
+	var artwork = PixelArt.art(
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx'	
+	)
+  .palette({
+    'm': mane,
+    'b': body,
+    'h': '#000000'	  
+  })
+  .pos({ x: 0, y: 0 })
+  .scale(2)
+  .draw(mycanvas.getContext('2d'));		
+	
+var art = mycanvas.toBuffer() // defaults to PNG
+var fileName = message.author.username + "-32-art.png";
+const artPiece = new Discord.Attachment(art, fileName);
+			
+			let item = new Discord.RichEmbed()
+
+			.setTitle(`A chest has appeared, type ${prefix}open to open it!`)
+			.attachFile(artPiece)
+			.setImage(url.href)
+			.setColor("#a57400");
+
+		room.sendEmbed(item);
+			
+			
+		}	
+		
+		else {
+			
+			
+		}
+		
+		});
+	
+}
+		
+function spawn(){
+		var appear = Math.floor(Math.random() * 100) + 1;
+		
+		if(appear == 100){
+			
+			
+			encounter();	
+		} else {
+			
+			
+			return;	
+		}
+	}	
+
+function timeSpawn(){
+		var appear = Math.floor(Math.random() * 200) + 1;
+		
+		if(appear == 200){
+			
+			
+			encounter();	
+		} else {
+			
+			
+			return;	
+		}
+	}		
+
+
+		
+//spawn();
+//setInterval(timeSpawn(), 2000);
 	
 //commands	
 
@@ -567,7 +718,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 200) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -590,7 +741,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 500) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -613,7 +764,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 10) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -636,7 +787,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 50) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -659,7 +810,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 500) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -682,7 +833,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 5000) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -705,7 +856,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 5000) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -728,7 +879,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 10000) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -751,7 +902,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 50000) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -774,7 +925,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 100000) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
@@ -797,7 +948,7 @@ if(command === `${prefix}shop`){
 		let money = rows[0].money;
 		var items = stuff + "\n" + messageArray[1];
 		if(money < 1000000) {
-			message.author.send("Insufficient Funds.");
+			message.channel.send("Insufficient Funds.");
 			return;
 		}
 		
