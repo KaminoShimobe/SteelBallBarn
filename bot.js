@@ -562,8 +562,57 @@ function encounter(){
 			sql = `INSERT INTO encounter (id, body, mane, breed, personality, fleeRate) VALUES ('${message.guild.id}', '${body}', '${mane}', '${sprite}', '${personality}', ${fleeRate})`;
 			con.query(sql, console.log);
 			
-	var pose = [];
-	var pose2 = [];
+	var pose = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'xxbbbbmxxxxxxxxxxxxxxxxx',
+	'bbbhbbmxxxxxxxxxxxxxxxxx',
+	'bbbbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmmmxxxxxxxxxxxxxx',
+	'xxxbbbbbbbbbbmmxxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxmxxxxxx',
+	'xxxbbbbbbbbbbbmmmmxxxxxx',
+	'xxxbxbxxxxxbxbxmmxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxhxhxxxxxhxhxxxxxxxxxx'];
+	var pose2 = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'mxmbbbbxxxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'xmmbbbxxxxxxxxxxxxxxxxxx',
+	'xmmbbbmmmmxxxxxxxxxxxxxx',
+	'mmmbbbbmbbbbbxmmxxmxxxxx',
+	'xmmbbbbbbbbbbbxmmxxmxxxx',
+	'xxxbbbbbbbbbbbxmmxmmxxxxx',
+	'xxxbbbbbbbbbbbxmmmmmxxxx',
+	'xxxbbbbbbbbbbbxxmmmxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxhxhxxxxxhxxhxxxxxxxxx'
+	];
 	var pose3 = [];
 	var pose4 = [];		
 	
@@ -582,9 +631,7 @@ function encounter(){
 const { createCanvas } = require('canvas')	
 		const mycanvas = createCanvas(400, 2)	
 	var artwork = PixelArt.art(
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx'	
+		
 	)
   .palette({
     'm': mane,
