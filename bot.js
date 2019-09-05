@@ -506,60 +506,20 @@ function encounter(){
 	con.query(`SELECT * FROM encounter WHERE id = '${message.guild.id}'`, (err, rows) => {
 		if(err) throw err;
 		let sql;	
-		var level = Math.floor(Math.random() * 10) + 1;
 		var personalities = ["simple", "stubborn", "sporadic", "cautious", "hasty", "gentle", "patient"];
 		var personality = personalities[Math.floor(Math.random() * 6)];
-		var iq = Math.floor(Math.random() * 100) + 10;
-		var strength = Math.floor(Math.random() * 10) + 1;
-		var stamina = Math.floor(Math.random() * 10) + 1;
-		var speed = Math.floor(Math.random() * 10) + 1;
-		var fleeRate = strength + stamina + speed + (iq / 5);
 		var mane = '#'+Math.floor(Math.random()*16777215).toString(16);
 		var body = '#'+Math.floor(Math.random()*16777215).toString(16);
 		
-		if(personality == "gentle") {
-		 strength -= 1;
-		 speed -= 1;	
-		 iq += 10
-		}	else if(personality == "stubborn") {
-		 strength += 1;
-		 stamina += 2;	
-		 iq -= 10;	
-		} else if(personality == "sporadic") {	
-		var chance = Math.floor(Math.random() * 1);	
-		 strength += Math.floor(Math.random() * 3);
-		 stamina += Math.floor(Math.random() * 3);
-		 speed += Math.floor(Math.random() * 3);
-		if(chance == 0 && iq > 25){		
-		 iq -= Math.floor(Math.random() * 25);	
-		} else {
-		 iq += Math.floor(Math.random() * 25);		
-		}	
-		} else if(personality == "cautious") {
-		 strength += 1;
-		 stamina -= 1;	
-		 speed += 2;	
-		 iq += 5;	
-		} else if(personality == "hasty") {
-		 strength += 2;
-		 stamina -= 1;
-		 speed += 2	
-		 iq -= 10;	
-		} else if(personality == "patient") {
-		 stamina += 2;	
-		 speed -= 1;		
-		 iq += 10;	
-		} else {
 			
-		}	
 	
 	
 		if(rows.length < 1) {
 		
 		var poses = ["normal", "lookBack", "eating", "leaping"];
-		var sprite = poses[Math.floor(math.random * 4)];	
+		var sprite = poses[Math.floor(math.random * 1)];	
 			
-			sql = `INSERT INTO encounter (id, body, mane, breed, personality, fleeRate) VALUES ('${message.guild.id}', '${body}', '${mane}', '${sprite}', '${personality}', ${fleeRate})`;
+			sql = `INSERT INTO encounter (id, body, mane, breed, personality, fleeRate) VALUES ('${message.guild.id}', '${body}', '${mane}', '${sprite}', '${personality}', ${0})`;
 			con.query(sql, console.log);
 			
 	var pose = [
@@ -613,7 +573,32 @@ function encounter(){
 	'xxxbxbxxxxxbxxbxxxxxxxxx',
 	'xxxhxhxxxxxhxxhxxxxxxxxx'
 	];
-	var pose3 = [];
+	var pose3 = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'mxmbbbbxxxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'xmmbbbxxxxxxxxxxxxxxxxxx',
+	'xmmbbbmmmmxxxxxxxxxxxxxx',
+	'mmmbbbbmbbbbbxmmxxmxxxxx',
+	'xmmbbbbbbbbbbbxmmxxmxxxx',
+	'xxxbbbbbbbbbbbxmmxmmxxxxx',
+	'xxxbbbbbbbbbbbxmmmmmxxxx',
+	'xbxbbbbbbbbbbbxxmmmxxxxx',
+	'xbmmxxbbxxxbxbxxxxxxxxxx',
+	'xbbbbbxbxxxbxxbxxxxxxxxx',
+	'xbhbbxxbxxxbxxbxxxxxxxxx',
+	'bbbbxxxbxxxbxxbxxxxxxxxx',
+	'bbbxxxxhxxxhxxhxxxxxxxxx'
+	];
 	var pose4 = [];		
 	
 	var jojoRef;
@@ -629,9 +614,32 @@ function encounter(){
 			
 			var PixelArt = require('pixel-art');	
 const { createCanvas } = require('canvas')	
-		const mycanvas = createCanvas(400, 2)	
+		const mycanvas = createCanvas(600, 600)	
 	var artwork = PixelArt.art(
-		
+		jojoRef[0],
+		jojoRef[1],
+		jojoRef[2],
+		jojoRef[3],
+		jojoRef[4],
+		jojoRef[5],
+		jojoRef[6],
+		jojoRef[7],
+		jojoRef[8],
+		jojoRef[9],
+		jojoRef[10],
+		jojoRef[11],
+		jojoRef[12],
+		jojoRef[13],
+		jojoRef[14],
+		jojoRef[15],
+		jojoRef[16],
+		jojoRef[17],
+		jojoRef[18],
+		jojoRef[19],
+		jojoRef[20],
+		jojoRef[21],
+		jojoRef[22],
+		jojoRef[23]
 	)
   .palette({
     'm': mane,
@@ -639,7 +647,7 @@ const { createCanvas } = require('canvas')
     'h': '#000000'	  
   })
   .pos({ x: 0, y: 0 })
-  .scale(2)
+  .scale(24)
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
@@ -648,7 +656,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			
 			let item = new Discord.RichEmbed()
 
-			.setTitle(`A chest has appeared, type ${prefix}open to open it!`)
+			.setTitle(`A wild horse has appeared, type ${prefix}approach try and catch it!`)
 			.attachFile(artPiece)
 			.setImage(url.href)
 			.setColor("#a57400");
@@ -659,8 +667,152 @@ const artPiece = new Discord.Attachment(art, fileName);
 		}	
 		
 		else {
+		message.channel.send("The wild horse fled!");	
+		var poses = ["normal", "lookBack", "eating", "leaping"];
+		var sprite = poses[Math.floor(math.random * 1)];	
+		sql = `UPDATE encounter SET body = '${body}', mane = '${mane}', breed = '${sprite}', personality = '${personality}', fleeRate = ${0} WHERE id = '${message.guild.id}'`
+			con.query(sql);	
+			var pose = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'xxbbbbmxxxxxxxxxxxxxxxxx',
+	'bbbhbbmxxxxxxxxxxxxxxxxx',
+	'bbbbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmmmxxxxxxxxxxxxxx',
+	'xxxbbbbbbbbbbmmxxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxmxxxxxx',
+	'xxxbbbbbbbbbbbmmmmxxxxxx',
+	'xxxbxbxxxxxbxbxmmxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxhxhxxxxxhxhxxxxxxxxxx'];
+	var pose2 = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'mxmbbbbxxxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'xmmbbbxxxxxxxxxxxxxxxxxx',
+	'xmmbbbmmmmxxxxxxxxxxxxxx',
+	'mmmbbbbmbbbbbxmmxxmxxxxx',
+	'xmmbbbbbbbbbbbxmmxxmxxxx',
+	'xxxbbbbbbbbbbbxmmxmmxxxxx',
+	'xxxbbbbbbbbbbbxmmmmmxxxx',
+	'xxxbbbbbbbbbbbxxmmmxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxhxhxxxxxhxxhxxxxxxxxx'
+	];
+	var pose3 = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'mxmbbbbxxxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'xmmbbbxxxxxxxxxxxxxxxxxx',
+	'xmmbbbmmmmxxxxxxxxxxxxxx',
+	'mmmbbbbmbbbbbxmmxxmxxxxx',
+	'xmmbbbbbbbbbbbxmmxxmxxxx',
+	'xxxbbbbbbbbbbbxmmxmmxxxxx',
+	'xxxbbbbbbbbbbbxmmmmmxxxx',
+	'xbxbbbbbbbbbbbxxmmmxxxxx',
+	'xbmmxxbbxxxbxbxxxxxxxxxx',
+	'xbbbbbxbxxxbxxbxxxxxxxxx',
+	'xbhbbxxbxxxbxxbxxxxxxxxx',
+	'bbbbxxxbxxxbxxbxxxxxxxxx',
+	'bbbxxxxhxxxhxxhxxxxxxxxx'
+	];
+	var pose4 = [];		
+	
+	var jojoRef;
+	if(sprite == "normal"){
+		jojoRef = pose;	
+	} else if(sprite == "lookBack"){
+		jojoRef = pose2;	
+	} else if(sprite == "eating"){
+		jojoRef = pose3;	
+	} else if(sprite == "leaping"){
+		jojoRef = pose4;	
+	}			
 			
+			var PixelArt = require('pixel-art');	
+const { createCanvas } = require('canvas')	
+		const mycanvas = createCanvas(600, 600)	
+	var artwork = PixelArt.art(
+		jojoRef[0],
+		jojoRef[1],
+		jojoRef[2],
+		jojoRef[3],
+		jojoRef[4],
+		jojoRef[5],
+		jojoRef[6],
+		jojoRef[7],
+		jojoRef[8],
+		jojoRef[9],
+		jojoRef[10],
+		jojoRef[11],
+		jojoRef[12],
+		jojoRef[13],
+		jojoRef[14],
+		jojoRef[15],
+		jojoRef[16],
+		jojoRef[17],
+		jojoRef[18],
+		jojoRef[19],
+		jojoRef[20],
+		jojoRef[21],
+		jojoRef[22],
+		jojoRef[23]
+		
+	)
+  .palette({
+    'm': mane,
+    'b': body,
+    'h': '#000000'	  
+  })
+  .pos({ x: 0, y: 0 })
+  .scale(24)
+  .draw(mycanvas.getContext('2d'));		
+	
+var art = mycanvas.toBuffer() // defaults to PNG
+var fileName = message.author.username + "-32-art.png";
+const artPiece = new Discord.Attachment(art, fileName);
 			
+			let item = new Discord.RichEmbed()
+
+			.setTitle(`A wild horse has appeared, type ${prefix}approach try and catch it!`)
+			.attachFile(artPiece)
+			.setImage(url.href)
+			.setColor("#a57400");
+
+		room.sendEmbed(item);
 		}
 		
 		});
@@ -697,8 +849,172 @@ function timeSpawn(){
 
 
 		
-//spawn();
-//setInterval(timeSpawn(), 2000);
+spawn();
+setInterval(timeSpawn(), 2000);
+	
+function approach(){
+	con.query(`SELECT * FROM encounter WHERE id = '${message.guild.id}'`, (err, rows) => {
+		if(err) throw err;
+	
+		let sql;
+		let sql2;
+		var level = Math.floor(Math.random() * 10) + 1;
+		var personality = rows[0].personality;
+		var iq = Math.floor(Math.random() * 100) + 10;
+		var strength = Math.floor(Math.random() * 10) + 1;
+		var stamina = Math.floor(Math.random() * 10) + 1;
+		var speed = Math.floor(Math.random() * 10) + 1;
+		var fleeRate = strength + stamina + speed + (iq / 5);
+		var mane = rows[0].mane;
+		var body = rows[0].body;
+		
+		if(personality == "gentle") {
+		 strength -= 1;
+		 speed -= 1;	
+		 iq += 10
+		}	else if(personality == "stubborn") {
+		 strength += 1;
+		 stamina += 2;	
+		 iq -= 10;	
+		} else if(personality == "sporadic") {	
+		var chance = Math.floor(Math.random() * 1);	
+		 strength += Math.floor(Math.random() * 3);
+		 stamina += Math.floor(Math.random() * 3);
+		 speed += Math.floor(Math.random() * 3);
+		if(chance == 0 && iq > 25){		
+		 iq -= Math.floor(Math.random() * 25);	
+		} else {
+		 iq += Math.floor(Math.random() * 25);		
+		}	
+		} else if(personality == "cautious") {
+		 strength += 1;
+		 stamina -= 1;	
+		 speed += 2;	
+		 iq += 5;	
+		} else if(personality == "hasty") {
+		 strength += 2;
+		 stamina -= 1;
+		 speed += 2	
+		 iq -= 10;	
+		} else if(personality == "patient") {
+		 stamina += 2;	
+		 speed -= 1;		
+		 iq += 10;	
+		} else {
+			
+		}
+		
+		sql = `UPDATE encounter fleeRate = ${fleeRate} WHERE id = '${message.guild.id}'`
+		con.query(sql);
+		console.log("flee rate online for: " + fleeRate)
+		con.query(`SELECT * FROM user WHERE id = '${message.username.id}'`, (err, rows) => {
+		if(err) throw err;
+		
+		let sql3;
+		let items = rows[0].inventory;	
+			
+		function battle(){
+		
+		let item = new Discord.RichEmbed()
+
+			.setTitle(`What will ` +  message.author.username + ` do?`)
+			.setDescription("```&tame \n &items \n &use [item] \n &flee```")
+			.setColor("#a57400");
+		
+		message.send(item);
+		const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
+        		collector.once('collect', message => {
+            		if (message.content == `&flee`) {
+               		 message.channel.send(message.author.username +" got away safely!");	
+                		return;
+            		} else if (message.content == `&tame`) {
+               		 message.channel.send(message.author.username +" approaches the horse...");
+			 message.channel.send(".");
+			 message.channel.send(".");
+			 message.channel.send(".");
+			var success = Math.floor(Math.random() * 100) + 1;
+			if(success <= fleeRate){
+				sql2 = `DELETE FROM encounter WHERE id = '${message.guild.id}'`;
+				con.query(sql2);	 
+				setTimeout(message.channel.send("The wild horse fled!"), 300);
+				  
+			}	else{
+				con.query(`SELECT * FROM horse WHERE owner = '${message.username.id}' AND name = 'newHorse'`, (err, rows) => {	
+				if(err) throw err;
+				let sql4;	
+					
+				if(rows.length < 1) {
+					
+				}	else {
+					
+				}	
+					
+					
+					
+				});	
+				setTimeout(message.channel.send("The wild horse has been tamed!"), 300);
+					   }		   
+                		return;
+            		} else if (message.content == `${prefix}use apple`) {
+				if(items.indexOf("apple") != -1){
+ 					
+ 					sql2 = `UPDATE encounter SET fleeRate = ${fleeRate * .1} WHERE id = '${message.guild.id}'`;
+ 					con.query(sql2, console.log);
+ 					var used = items.replace('apple\n','');
+ 					used = `UPDATE user SET inventory = '${used}' WHERE id = '${message.author.id}'`;
+ 					con.query(used, console.log);
+ 					message.channel.send("The horse enjoyed the apple!");
+ 					battle();
+ 					 
+ 				} else {
+ 					message.channel.send("You don't have this item!");
+					battle();
+ 				}
+			} else if (message.content == `${prefix}use bigApple`) {
+				if(items.indexOf("bigApple") != -1){
+ 					
+ 					sql2 = `UPDATE encounter SET fleeRate = ${fleeRate * .25} WHERE id = '${message.guild.id}'`;
+ 					con.query(sql2, console.log);
+ 					var used = items.replace('bigApple\n','');
+ 					used = `UPDATE user SET inventory = '${used}' WHERE id = '${message.author.id}'`;
+ 					con.query(used, console.log);
+ 					message.channel.send("The horse really enjoyed the big apple!");
+ 					battle();
+ 					 
+ 				} else {
+ 					message.channel.send("You don't have this item!");
+					battle();
+ 				}
+			} else if (message.content == `${prefix}use goldenApple`) {
+				if(items.indexOf("goldenApple") != -1){
+ 					
+ 					sql2 = `UPDATE encounter SET fleeRate = ${fleeRate * .5} WHERE id = '${message.guild.id}'`;
+ 					con.query(sql2, console.log);
+ 					var used = items.replace('goldenApple\n','');
+ 					used = `UPDATE user SET inventory = '${used}' WHERE id = '${message.author.id}'`;
+ 					con.query(used, console.log);
+ 					message.channel.send("The horse extremely enjoyed the golden apple!");
+ 					battle();
+ 					 
+ 				} else {
+ 					message.channel.send("You don't have this item!");
+					battle();
+ 				}
+			} else if (message.content == `${prefix}items`) {
+				setTimeout(battle(), 200);
+			}
+				else {
+				message.channel.send("Invalid input!");
+				battle();	
+			}	
+			});
+	}
+			
+		});	
+	});
+	
+	
+}	
 	
 //commands	
 
