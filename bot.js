@@ -616,30 +616,30 @@ function encounter(){
 const { createCanvas } = require('canvas')	
 		const mycanvas = createCanvas(600, 600)	
 	var artwork = PixelArt.art(
-		jojoRef[0],
-		jojoRef[1],
-		jojoRef[2],
-		jojoRef[3],
-		jojoRef[4],
-		jojoRef[5],
-		jojoRef[6],
-		jojoRef[7],
-		jojoRef[8],
-		jojoRef[9],
-		jojoRef[10],
-		jojoRef[11],
-		jojoRef[12],
-		jojoRef[13],
-		jojoRef[14],
-		jojoRef[15],
-		jojoRef[16],
-		jojoRef[17],
-		jojoRef[18],
-		jojoRef[19],
-		jojoRef[20],
-		jojoRef[21],
-		jojoRef[22],
-		jojoRef[23]
+		'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'xxbbbbmxxxxxxxxxxxxxxxxx',
+	'bbbhbbmxxxxxxxxxxxxxxxxx',
+	'bbbbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmmmxxxxxxxxxxxxxx',
+	'xxxbbbbbbbbbbmmxxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxmxxxxxx',
+	'xxxbbbbbbbbbbbmmmmxxxxxx',
+	'xxxbxbxxxxxbxbxmmxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxhxhxxxxxhxhxxxxxxxxxx'
 	)
   .palette({
     'm': mane,
@@ -658,7 +658,6 @@ const artPiece = new Discord.Attachment(art, fileName);
 
 			.setTitle(`A wild horse has appeared, type ${prefix}approach try and catch it!`)
 			.attachFile(artPiece)
-			.setImage(url.href)
 			.setColor("#a57400");
 
 		room.sendEmbed(item);
@@ -766,30 +765,30 @@ const artPiece = new Discord.Attachment(art, fileName);
 const { createCanvas } = require('canvas')	
 		const mycanvas = createCanvas(600, 600)	
 	var artwork = PixelArt.art(
-		jojoRef[0],
-		jojoRef[1],
-		jojoRef[2],
-		jojoRef[3],
-		jojoRef[4],
-		jojoRef[5],
-		jojoRef[6],
-		jojoRef[7],
-		jojoRef[8],
-		jojoRef[9],
-		jojoRef[10],
-		jojoRef[11],
-		jojoRef[12],
-		jojoRef[13],
-		jojoRef[14],
-		jojoRef[15],
-		jojoRef[16],
-		jojoRef[17],
-		jojoRef[18],
-		jojoRef[19],
-		jojoRef[20],
-		jojoRef[21],
-		jojoRef[22],
-		jojoRef[23]
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'xxbbbbmxxxxxxxxxxxxxxxxx',
+	'bbbhbbmxxxxxxxxxxxxxxxxx',
+	'bbbbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmmmxxxxxxxxxxxxxx',
+	'xxxbbbbbbbbbbmmxxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxmxxxxxx',
+	'xxxbbbbbbbbbbbmmmmxxxxxx',
+	'xxxbxbxxxxxbxbxmmxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxhxhxxxxxhxhxxxxxxxxxx'
 		
 	)
   .palette({
@@ -809,7 +808,6 @@ const artPiece = new Discord.Attachment(art, fileName);
 
 			.setTitle(`A wild horse has appeared, type ${prefix}approach try and catch it!`)
 			.attachFile(artPiece)
-			.setImage(url.href)
 			.setColor("#a57400");
 
 		room.sendEmbed(item);
@@ -821,7 +819,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 		
 function spawn(){
 		var appear = Math.floor(Math.random() * 10) + 1;
-		
+		console.log(appear);
 		if(appear == 10){
 			
 			
@@ -970,30 +968,30 @@ function viewHorse(){
 const { createCanvas } = require('canvas')	
 		const mycanvas = createCanvas(600, 600)	
 	var artwork = PixelArt.art(
-		jojoRef[0],
-		jojoRef[1],
-		jojoRef[2],
-		jojoRef[3],
-		jojoRef[4],
-		jojoRef[5],
-		jojoRef[6],
-		jojoRef[7],
-		jojoRef[8],
-		jojoRef[9],
-		jojoRef[10],
-		jojoRef[11],
-		jojoRef[12],
-		jojoRef[13],
-		jojoRef[14],
-		jojoRef[15],
-		jojoRef[16],
-		jojoRef[17],
-		jojoRef[18],
-		jojoRef[19],
-		jojoRef[20],
-		jojoRef[21],
-		jojoRef[22],
-		jojoRef[23]
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'xxbbbbmxxxxxxxxxxxxxxxxx',
+	'bbbhbbmxxxxxxxxxxxxxxxxx',
+	'bbbbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmmmxxxxxxxxxxxxxx',
+	'xxxbbbbbbbbbbmmxxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxmxxxxxx',
+	'xxxbbbbbbbbbbbmmmmxxxxxx',
+	'xxxbxbxxxxxbxbxmmxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxhxhxxxxxhxhxxxxxxxxxx'
 		
 	)
   .palette({
@@ -1013,7 +1011,6 @@ const artPiece = new Discord.Attachment(art, fileName);
 
 			.setTitle(currowner + `'s horse: ` + name)
 			.attachFile(artPiece)
-			.setImage(url.href)
 			.setDescription("Lvl: " + level + "\n Exp: " + exp + "/" + cap + "/n" + personality +  "/n Stamina: " + stamina + "\n IQ: " + iq + "\n Strength: " + strength + "\n Speed: " + speed )
 			.setColor(body);
 
