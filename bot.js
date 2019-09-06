@@ -643,8 +643,8 @@ const { createCanvas } = require('canvas')
 	'   h h     h h          '
 	)
   .palette({
-    'm': mane,
-    'b': body,
+    'm': `${mane}`,
+    'b': `${body}`,
     'h': '#000000'
 	  
   })
@@ -793,8 +793,8 @@ const { createCanvas } = require('canvas')
 	'   h h     h h          '
 	)
   .palette({
-    'm': mane,
-    'b': body,
+    'm': `${mane}`,
+    'b':`${body}`,
     'h': '#000000'	  
   })
   .pos({ x: 0, y: 0 })
