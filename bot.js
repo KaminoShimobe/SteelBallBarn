@@ -511,7 +511,7 @@ function encounter(){
 		var mane = '#'+Math.floor(Math.random()*16777215).toString(16);
 		var body = '#'+Math.floor(Math.random()*16777215).toString(16);
 		
-			
+		const room = bot.channels.get("558392488230912040");	
 	
 	
 		if(rows.length < 1) {
@@ -1017,7 +1017,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			.setDescription("Lvl: " + level + "\n Exp: " + exp + "/" + cap + "/n" + personality +  "/n Stamina: " + stamina + "\n IQ: " + iq + "\n Strength: " + strength + "\n Speed: " + speed )
 			.setColor(body);
 
-		room.sendEmbed(item);
+		message.sendEmbed(item);
 		}	
 	});	
 }	
