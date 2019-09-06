@@ -820,7 +820,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 function spawn(){
 		var appear = Math.floor(Math.random() * 10) + 1;
 		console.log(appear);
-		if(appear == 10){
+		if(appear == 10 || appear == 7 || appear == 5){
 			
 			
 			encounter();	
