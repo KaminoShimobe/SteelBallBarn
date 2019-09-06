@@ -851,6 +851,176 @@ function timeSpawn(){
 		
 spawn();
 setInterval(timeSpawn(), 2000);
+
+function viewHorse(){
+	con.query(`SELECT * FROM horse WHERE owner = '${message.username.id}' AND name = '${messageArray[1]}'`, (err, rows) => {	
+				if(err) throw err;
+		let sql;
+		let name = rows[0].name;
+		let stamina = rows[0].energy;
+		let body = rows[0].body;
+		let mane = rows[0].mane;
+		let breed = rows[0].breed;
+		let level = rows[0].level;
+		let exp = rows[0].exp;
+		let personality = rows[0].personality;
+		let currowner = rows[0].currowner;
+		let iq = rows[0].iq;
+		let strength = rows[0].strength;
+		let speed = rows[0].speed;
+		var cap = level * 100;
+		
+		if(rows.length < 1) {
+			message.reply("Such horse doesn't exist!");
+			return;
+		} else {
+			
+			
+			var pose = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'xxbbbbmxxxxxxxxxxxxxxxxx',
+	'bbbhbbmxxxxxxxxxxxxxxxxx',
+	'bbbbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmxxxxxxxxxxxxxxxx',
+	'xxxbbbmmmmxxxxxxxxxxxxxx',
+	'xxxbbbbbbbbbbmmxxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxxxxxxxx',
+	'xxxbbbbbbbbbbbmmxmxxxxxx',
+	'xxxbbbbbbbbbbbmmmmxxxxxx',
+	'xxxbxbxxxxxbxbxmmxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxhxhxxxxxhxhxxxxxxxxxx'];
+	var pose2 = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'mxmbbbbxxxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'xmmbbbxxxxxxxxxxxxxxxxxx',
+	'xmmbbbmmmmxxxxxxxxxxxxxx',
+	'mmmbbbbmbbbbbxmmxxmxxxxx',
+	'xmmbbbbbbbbbbbxmmxxmxxxx',
+	'xxxbbbbbbbbbbbxmmxmmxxxxx',
+	'xxxbbbbbbbbbbbxmmmmmxxxx',
+	'xxxbbbbbbbbbbbxxmmmxxxxx',
+	'xxxbxbxxxxxbxbxxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxbxbxxxxxbxxbxxxxxxxxx',
+	'xxxhxhxxxxxhxxhxxxxxxxxx'
+	];
+	var pose3 = [
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxxxxxxxxxxxxxxxxxxxxxx',
+	'xxxbxbxxxxxxxxxxxxxxxxxx',
+	'xxxmmbxxxxxxxxxxxxxxxxxx',
+	'mxmbbbbxxxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'mmmbbhbbbxxxxxxxxxxxxxxx',
+	'xmmbbbxxxxxxxxxxxxxxxxxx',
+	'xmmbbbmmmmxxxxxxxxxxxxxx',
+	'mmmbbbbmbbbbbxmmxxmxxxxx',
+	'xmmbbbbbbbbbbbxmmxxmxxxx',
+	'xxxbbbbbbbbbbbxmmxmmxxxxx',
+	'xxxbbbbbbbbbbbxmmmmmxxxx',
+	'xbxbbbbbbbbbbbxxmmmxxxxx',
+	'xbmmxxbbxxxbxbxxxxxxxxxx',
+	'xbbbbbxbxxxbxxbxxxxxxxxx',
+	'xbhbbxxbxxxbxxbxxxxxxxxx',
+	'bbbbxxxbxxxbxxbxxxxxxxxx',
+	'bbbxxxxhxxxhxxhxxxxxxxxx'
+	];
+	var pose4 = [];		
+	
+	var jojoRef;
+	if(sprite == "normal"){
+		jojoRef = pose;	
+	} else if(sprite == "lookBack"){
+		jojoRef = pose2;	
+	} else if(sprite == "eating"){
+		jojoRef = pose3;	
+	} else if(sprite == "leaping"){
+		jojoRef = pose4;	
+	}			
+			
+			var PixelArt = require('pixel-art');	
+const { createCanvas } = require('canvas')	
+		const mycanvas = createCanvas(600, 600)	
+	var artwork = PixelArt.art(
+		jojoRef[0],
+		jojoRef[1],
+		jojoRef[2],
+		jojoRef[3],
+		jojoRef[4],
+		jojoRef[5],
+		jojoRef[6],
+		jojoRef[7],
+		jojoRef[8],
+		jojoRef[9],
+		jojoRef[10],
+		jojoRef[11],
+		jojoRef[12],
+		jojoRef[13],
+		jojoRef[14],
+		jojoRef[15],
+		jojoRef[16],
+		jojoRef[17],
+		jojoRef[18],
+		jojoRef[19],
+		jojoRef[20],
+		jojoRef[21],
+		jojoRef[22],
+		jojoRef[23]
+		
+	)
+  .palette({
+    'm': mane,
+    'b': body,
+    'h': '#000000'	  
+  })
+  .pos({ x: 0, y: 0 })
+  .scale(24)
+  .draw(mycanvas.getContext('2d'));		
+	
+var art = mycanvas.toBuffer() // defaults to PNG
+var fileName = message.author.username + "-32-art.png";
+const artPiece = new Discord.Attachment(art, fileName);
+			
+			let item = new Discord.RichEmbed()
+
+			.setTitle(currowner + `'s horse: ` + name)
+			.attachFile(artPiece)
+			.setImage(url.href)
+			.setDescription("Lvl: " + level + "\n Exp: " + exp + "/" + cap + "/n" + personality +  "/n Stamina: " + stamina + "\n IQ: " + iq + "\n Strength: " + strength + "\n Speed: " + speed )
+			.setColor(body);
+
+		room.sendEmbed(item);
+		}	
+	});	
+}	
 	
 function approach(){
 	con.query(`SELECT * FROM encounter WHERE id = '${message.guild.id}'`, (err, rows) => {
@@ -858,6 +1028,7 @@ function approach(){
 	
 		let sql;
 		let sql2;
+		let breed = rows[0].breed;
 		var level = Math.floor(Math.random() * 10) + 1;
 		var personality = rows[0].personality;
 		var iq = Math.floor(Math.random() * 100) + 10;
@@ -912,6 +1083,7 @@ function approach(){
 		
 		let sql3;
 		let items = rows[0].inventory;	
+		let horses = rows[0].horses;	
 			
 		function battle(){
 		
@@ -942,11 +1114,25 @@ function approach(){
 				con.query(`SELECT * FROM horse WHERE owner = '${message.username.id}' AND name = 'newHorse'`, (err, rows) => {	
 				if(err) throw err;
 				let sql4;	
-					
+				var horseName;	
 				if(rows.length < 1) {
+					message.reply(" what would you like to name your horse?")
+					const collector = new Discord.MessageCollector(message.channel, m => m.author.id === message.author.id, { time: 100000000 });
+        		collector.once('collect', message => {
+            		if (items.indexOf(message.context) != -1) {
+               	 		horseName = message.context + "" + (Math.random() * 1000);
+                		
+            		} else {
+				horseName = message.context;
+			  }
+			});
+					sql4 = `INSERT INTO horse (owner, name, energy, body, mane, breed, level, exp, personality, currowner, iq, strength, speed) VALUES ('${message.author.id}', '${horseName}', ${stamina}, '${body}', '${mane}', '${breed}', ${1}, ${0}, '${personality}', '${message.author.username}', ${iq}, ${strength}, ${speed})`;
+					con.query(sql4, console.log);
+					message.reply(" got a new horse " + horseName + "! \n View your horse data with **&check [horse name]**.");
 					
 				}	else {
-					
+					message.channel.send("You already have a new horse!");
+					return;
 				}	
 					
 					
@@ -1322,8 +1508,41 @@ if(command === `${prefix}shop`){
 		});
 	}
 	
-
+	
+if(command === `${prefix}approach`){
+	
+		con.query(`SELECT * FROM encounter WHERE id = '${message.guild.id}'`, (err, rows) => {
+		if(err) throw err;
+		
+		if(rows.length < 1) {
+			message.reply("No horse to approach!");
+			return;
+		} 	else {
+			
+		con.query(`SELECT * FROM user WHERE id = '${message.author.id}'`, (err, rows) => {
+		if(err) throw err;	
+		let stables = rows[0].stables;
+			
+		if(rows.length < 1) {
+			message.reply("You have no user! Create one with &user");
+			console.log(rows);
+			return;
+		} else {
+			
+		approach();
+		}
+		});
+		}	
+	});		
+			
+}	
+	
+if(command === `${prefix}check` && messageArray[1] != undefined ){	
+	viewHorse();
+}	
   
+			  
+			  
   });
 
 
