@@ -653,7 +653,7 @@ const { createCanvas } = require('canvas')
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
-var fileName = message.author.username + "-32-art.png";
+var fileName = message.author.username + "-horse.png";
 const artPiece = new Discord.Attachment(art, fileName);
 			
 			let item = new Discord.RichEmbed()
@@ -662,7 +662,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			.attachFile(artPiece)
 			.setColor("#a57400");
 
-		room.send(item);
+		message.channel.sendEmbed(item);
 			
 			
 		}	
@@ -802,7 +802,7 @@ const { createCanvas } = require('canvas')
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
-var fileName = message.author.username + "-32-art.png";
+var fileName = message.author.username + "-horse.png";
 const artPiece = new Discord.Attachment(art, fileName);
 			
 			let item = new Discord.RichEmbed()
