@@ -615,7 +615,7 @@ function encounter(){
 			
 			var PixelArt = require('pixel-art');	
 const { createCanvas } = require('canvas')	
-		const mycanvas = createCanvas(600, 600)	
+		const mycanvas = createCanvas(240, 240)	
 	var artwork = PixelArt.art(
 		'xxxxxxxxxxxxxxxxxxxxxxxx',
 	'xxxxxxxxxxxxxxxxxxxxxxxx',
@@ -648,7 +648,7 @@ const { createCanvas } = require('canvas')
     'h': '#000000'	  
   })
   .pos({ x: 0, y: 0 })
-  .scale(24)
+  .scale(10)
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
@@ -764,7 +764,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 //			
 			var PixelArt = require('pixel-art');	
 const { createCanvas } = require('canvas')	
-		const mycanvas = createCanvas(600, 600)	
+		const mycanvas = createCanvas(240, 240)	
 	var artwork = PixelArt.art(
 	'xxxxxxxxxxxxxxxxxxxxxxxx',
 	'xxxxxxxxxxxxxxxxxxxxxxxx',
@@ -798,7 +798,7 @@ const { createCanvas } = require('canvas')
     'h': '#000000'	  
   })
   .pos({ x: 0, y: 0 })
-  .scale(24)
+  .scale(10)
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
@@ -967,7 +967,7 @@ function viewHorse(){
 			
 			var PixelArt = require('pixel-art');	
 const { createCanvas } = require('canvas')	
-		const mycanvas = createCanvas(600, 600)	
+		const mycanvas = createCanvas(240, 240)	
 	var artwork = PixelArt.art(
 	'xxxxxxxxxxxxxxxxxxxxxxxx',
 	'xxxxxxxxxxxxxxxxxxxxxxxx',
@@ -1001,7 +1001,7 @@ const { createCanvas } = require('canvas')
     'h': '#000000'	  
   })
   .pos({ x: 0, y: 0 })
-  .scale(24)
+  .scale(10)
   .draw(mycanvas.getContext('2d'));		
 	
 var art = mycanvas.toBuffer() // defaults to PNG
