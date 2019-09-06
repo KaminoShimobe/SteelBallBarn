@@ -511,6 +511,7 @@ function encounter(){
 		var mane = '#'+Math.floor(Math.random()*16777215).toString(16);
 		var body = '#'+Math.floor(Math.random()*16777215).toString(16);
 		
+		message.channel.send(body + " - " + mane);
 		const room = bot.channels.get("560533501397696542");	
 	
 	
