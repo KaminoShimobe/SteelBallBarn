@@ -508,8 +508,8 @@ function encounter(){
 		let sql;	
 		var personalities = ["simple", "stubborn", "sporadic", "cautious", "hasty", "gentle", "patient"];
 		var personality = personalities[Math.floor(Math.random() * 6)];
-		var mane = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-		var body = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+		var mane = '#'+Math.floor(Math.random()*16777215).toString(16);
+		var body = '#'+Math.floor(Math.random()*16777215).toString(16);
 		
 		const room = bot.channels.get("560533501397696542");	
 	
@@ -847,7 +847,7 @@ function timeSpawn(){
 
 
 		
-spawn();
+//spawn();
 //setInterval(timeSpawn(), 2000);
 
 function viewHorse(){
