@@ -617,35 +617,36 @@ function encounter(){
 const { createCanvas } = require('canvas')	
 		const mycanvas = createCanvas(240, 240)	
 	var artwork = PixelArt.art(
-		'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxbxbxxxxxxxxxxxxxxxxxx',
-	'xxxmmbxxxxxxxxxxxxxxxxxx',
-	'xxbbbbmxxxxxxxxxxxxxxxxx',
-	'bbbhbbmxxxxxxxxxxxxxxxxx',
-	'bbbbbbmmxxxxxxxxxxxxxxxx',
-	'xxxbbbmmxxxxxxxxxxxxxxxx',
-	'xxxbbbmmmmxxxxxxxxxxxxxx',
-	'xxxbbbbbbbbbbmmxxxxxxxxx',
-	'xxxbbbbbbbbbbbmmxxxxxxxx',
-	'xxxbbbbbbbbbbbmmxxxxxxxx',
-	'xxxbbbbbbbbbbbmmxmxxxxxx',
-	'xxxbbbbbbbbbbbmmmmxxxxxx',
-	'xxxbxbxxxxxbxbxmmxxxxxxx',
-	'xxxbxbxxxxxbxbxxxxxxxxxx',
-	'xxxbxbxxxxxbxbxxxxxxxxxx',
-	'xxxbxbxxxxxbxbxxxxxxxxxx',
-	'xxxhxhxxxxxhxhxxxxxxxxxx'
+	'                        ',
+	'                        ',
+	'                        ',
+	'                        ',
+	'                        ',
+	'                        ',
+	'                        ',
+	'   b b                  ',
+	'   mmb                  ',
+	'  bbbbm                 ',
+	'bbbhbbm                 ',
+	'bbbbbbmm                ',
+	'   bbbmm                ',
+	'   bbbmmmm              ',
+	'   bbbbbbbbbbmm         ',
+	'   bbbbbbbbbbbmm        ',
+	'   bbbbbbbbbbbmm        ',
+	'   bbbbbbbbbbbmm m      ',
+	'   bbbbbbbbbbbmmmm      ',
+	'   b b     b b mm       ',
+	'   b b     b b          ',
+	'   b b     b b          ',
+	'   b b     b b          ',
+	'   h h     h h          '
 	)
   .palette({
     'm': mane,
     'b': body,
-    'h': '#000000'	  
+    'h': '#000000'
+	  
   })
   .pos({ x: 0, y: 0 })
   .scale(10)
@@ -766,31 +767,30 @@ const artPiece = new Discord.Attachment(art, fileName);
 const { createCanvas } = require('canvas')	
 		const mycanvas = createCanvas(240, 240)	
 	var artwork = PixelArt.art(
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxxxxxxxxxxxxxxxxxxxxxx',
-	'xxxbxbxxxxxxxxxxxxxxxxxx',
-	'xxxmmbxxxxxxxxxxxxxxxxxx',
-	'xxbbbbmxxxxxxxxxxxxxxxxx',
-	'bbbhbbmxxxxxxxxxxxxxxxxx',
-	'bbbbbbmmxxxxxxxxxxxxxxxx',
-	'xxxbbbmmxxxxxxxxxxxxxxxx',
-	'xxxbbbmmmmxxxxxxxxxxxxxx',
-	'xxxbbbbbbbbbbmmxxxxxxxxx',
-	'xxxbbbbbbbbbbbmmxxxxxxxx',
-	'xxxbbbbbbbbbbbmmxxxxxxxx',
-	'xxxbbbbbbbbbbbmmxmxxxxxx',
-	'xxxbbbbbbbbbbbmmmmxxxxxx',
-	'xxxbxbxxxxxbxbxmmxxxxxxx',
-	'xxxbxbxxxxxbxbxxxxxxxxxx',
-	'xxxbxbxxxxxbxbxxxxxxxxxx',
-	'xxxbxbxxxxxbxbxxxxxxxxxx',
-	'xxxhxhxxxxxhxhxxxxxxxxxx'
-		
+	'                        ',
+	'                        ',
+	'                        ',
+	'                        ',
+	'                        ',
+	'                        ',
+	'                        ',
+	'   b b                  ',
+	'   mmb                  ',
+	'  bbbbm                 ',
+	'bbbhbbm                 ',
+	'bbbbbbmm                ',
+	'   bbbmm                ',
+	'   bbbmmmm              ',
+	'   bbbbbbbbbbmm         ',
+	'   bbbbbbbbbbbmm        ',
+	'   bbbbbbbbbbbmm        ',
+	'   bbbbbbbbbbbmm m      ',
+	'   bbbbbbbbbbbmmmm      ',
+	'   b b     b b mm       ',
+	'   b b     b b          ',
+	'   b b     b b          ',
+	'   b b     b b          ',
+	'   h h     h h          '
 	)
   .palette({
     'm': mane,
