@@ -511,7 +511,7 @@ function encounter(){
 		var mane = '#'+Math.floor(Math.random()*16777215).toString(16);
 		var body = '#'+Math.floor(Math.random()*16777215).toString(16);
 		
-		const room = bot.channels.get("558392488230912040");	
+		const room = bot.channels.get("560533501397696542");	
 	
 	
 		if(rows.length < 1) {
