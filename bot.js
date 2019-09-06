@@ -508,8 +508,8 @@ function encounter(){
 		let sql;	
 		var personalities = ["simple", "stubborn", "sporadic", "cautious", "hasty", "gentle", "patient"];
 		var personality = personalities[Math.floor(Math.random() * 6)];
-		var mane = '#'+Math.floor(Math.random()*16777215).toString(16);
-		var body = '#'+Math.floor(Math.random()*16777215).toString(16);
+		var mane = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+		var body = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 		
 		const room = bot.channels.get("560533501397696542");	
 	
@@ -517,7 +517,7 @@ function encounter(){
 		if(rows.length < 1) {
 		
 		var poses = ["normal", "lookBack", "eating", "leaping"];
-		var sprite = poses[Math.floor(math.random * 1)];	
+		var sprite = poses[Math.floor(Math.random * 1)];	
 			
 			sql = `INSERT INTO encounter (id, body, mane, breed, personality, fleeRate) VALUES ('${message.guild.id}', '${body}', '${mane}', '${sprite}', '${personality}', ${0})`;
 			con.query(sql, console.log);
@@ -668,7 +668,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 		else {
 		message.channel.send("The wild horse fled!");	
 		var poses = ["normal", "lookBack", "eating", "leaping"];
-		// var sprite = poses[Math.floor(math.random * 1)];	
+		var sprite = poses[Math.floor(Math.random * 1)];	
 		sql = `UPDATE encounter SET body = '${body}', mane = '${mane}', breed = '${sprite}', personality = '${personality}', fleeRate = ${0} WHERE id = '${message.guild.id}'`
 			con.query(sql);	
 			var pose = [
