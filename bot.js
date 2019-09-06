@@ -601,16 +601,16 @@ function encounter(){
 	];
 	var pose4 = [];		
 	
-	var jojoRef;
-	if(sprite == "normal"){
-		jojoRef = pose;	
-	} else if(sprite == "lookBack"){
-		jojoRef = pose2;	
-	} else if(sprite == "eating"){
-		jojoRef = pose3;	
-	} else if(sprite == "leaping"){
-		jojoRef = pose4;	
-	}			
+//	var jojoRef;
+//	if(sprite == "normal"){
+//		jojoRef = pose;	
+//	} else if(sprite == "lookBack"){
+//		jojoRef = pose2;	
+//	} else if(sprite == "eating"){
+//		jojoRef = pose3;	
+//	} else if(sprite == "leaping"){
+//		jojoRef = pose4;	
+//	}			
 			
 			var PixelArt = require('pixel-art');	
 const { createCanvas } = require('canvas')	
@@ -668,7 +668,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 		else {
 		message.channel.send("The wild horse fled!");	
 		var poses = ["normal", "lookBack", "eating", "leaping"];
-		var sprite = poses[Math.floor(math.random * 1)];	
+		// var sprite = poses[Math.floor(math.random * 1)];	
 		sql = `UPDATE encounter SET body = '${body}', mane = '${mane}', breed = '${sprite}', personality = '${personality}', fleeRate = ${0} WHERE id = '${message.guild.id}'`
 			con.query(sql);	
 			var pose = [
@@ -750,17 +750,17 @@ const artPiece = new Discord.Attachment(art, fileName);
 	];
 	var pose4 = [];		
 	
-	var jojoRef;
-	if(sprite == "normal"){
-		jojoRef = pose;	
-	} else if(sprite == "lookBack"){
-		jojoRef = pose2;	
-	} else if(sprite == "eating"){
-		jojoRef = pose3;	
-	} else if(sprite == "leaping"){
-		jojoRef = pose4;	
-	}			
-			
+//	var jojoRef;
+//	if(sprite == "normal"){
+//		jojoRef = pose;	
+//	} else if(sprite == "lookBack"){
+//		jojoRef = pose2;	
+//	} else if(sprite == "eating"){
+//		jojoRef = pose3;	
+//	} else if(sprite == "leaping"){
+//		jojoRef = pose4;	
+//	}			
+//			
 			var PixelArt = require('pixel-art');	
 const { createCanvas } = require('canvas')	
 		const mycanvas = createCanvas(600, 600)	
