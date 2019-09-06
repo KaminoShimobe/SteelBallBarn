@@ -1200,7 +1200,10 @@ function approach(){
 }	
 	
 //commands	
-
+if(command === `${prefix}spawn`){
+		encounter();
+}
+	
 	if(command === `${prefix}help`){
 		help();
 }
