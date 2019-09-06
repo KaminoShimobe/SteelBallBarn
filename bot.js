@@ -643,8 +643,8 @@ const { createCanvas } = require('canvas')
 	'   h h     h h          '
 	)
   .palette({
-    'm': '#000000',
-    'b': '#000000',
+    'm': mane,
+    'b': body,
     'h': '#000000'
 	  
   })
@@ -662,7 +662,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			.attachFile(artPiece)
 			.setColor("#a57400");
 
-		room.sendEmbed(item);
+		room.send(item);
 			
 			
 		}	
@@ -793,8 +793,8 @@ const { createCanvas } = require('canvas')
 	'   h h     h h          '
 	)
   .palette({
-    'm': '#000000',
-    'b': '#000000',
+    'm': mane,
+    'b': body,
     'h': '#000000'	  
   })
   .pos({ x: 0, y: 0 })
@@ -811,7 +811,7 @@ const artPiece = new Discord.Attachment(art, fileName);
 			.attachFile(artPiece)
 			.setColor("#a57400");
 
-		room.sendEmbed(item);
+		room.send(item);
 		}
 		
 		});
