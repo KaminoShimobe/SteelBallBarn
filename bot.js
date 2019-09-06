@@ -850,7 +850,7 @@ function timeSpawn(){
 
 		
 spawn();
-setInterval(timeSpawn(), 2000);
+//setInterval(timeSpawn(), 2000);
 
 function viewHorse(){
 	con.query(`SELECT * FROM horse WHERE owner = '${message.username.id}' AND name = '${messageArray[1]}'`, (err, rows) => {	
